@@ -1,15 +1,20 @@
 /** @format */
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Pokemon } from '@/types';
 import Bulba from '@/public/Image.png';
 
 interface Props {
 	pokemon: Pokemon[];
-	sprite: Pokemon[];
 	onSelect: (pokemon: Pokemon) => void;
+	onSortChange: () => void;
 }
 
-export default function PokemonList({ pokemon, onSelect }: Props) {
+export default function PokemonList({
+	pokemon,
+	onSelect,
+	onSortChange,
+}: Props) {
 	return (
 		<div className='grid grid-cols-4 gap-4'>
 			{pokemon.map((pokemon) => (
