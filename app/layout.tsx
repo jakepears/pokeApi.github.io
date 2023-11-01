@@ -5,7 +5,7 @@ import { Encode_Sans, Roboto } from 'next/font/google';
 import './globals.css';
 
 const encode = Encode_Sans({ subsets: ['latin'] });
-const roboto = Roboto({ subsets: ['latin'], weight: [] });
+const roboto = Roboto({ subsets: ['latin'], weight: ['500'] });
 
 export const metadata: Metadata = {
 	title: 'pokeApi app',

@@ -1,5 +1,5 @@
 /** @format */
-
+'use client';
 import React, { useState } from 'react';
 import PokemonList from '@/components/PokemonList';
 import PokemonDetails from '@/components/PokemonDetails';
@@ -15,9 +15,11 @@ export default function PokemonPage({ pokemon }: Props) {
 	};
 
 	return (
-		<section>
+		<section className='bg-[#F6F6F7] p-12 h-screen w-screen'>
+			<h1 className='text-4xl mb-12'>All the Pokemon!</h1>
 			<PokemonList pokemon={pokemon} onSelect={handleSelect} />
-			{selected && <PokemonDetails pokemon={selected} />}
+			<div className='h-3' />
+			{selected && <PokemonDetails pokemon={[selected]} />}
 		</section>
 	);
 }

@@ -2,7 +2,7 @@
 import { Pokemon } from '@/types';
 
 interface Props {
-	pokemon: Pokemon;
+	pokemon: Pokemon[];
 }
 export default function PokemonDetails({ pokemon }: Props) {
 	return (
