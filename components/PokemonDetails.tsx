@@ -10,7 +10,8 @@ export default function PokemonDetails({ pokemon }: Props) {
 			{pokemon.map((pokemon) => (
 				<h2 key={pokemon.id}>{pokemon.name}</h2>
 			))}
-			{/* Details */}
+			this is a super cool pokemon that can battle and hurt other pokemon, but
+			in a fun cartoon way
 		</div>
 	);
 }

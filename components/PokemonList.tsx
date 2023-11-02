@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Pokemon } from '@/types';
 import Bulba from '@/public/Image.png';
 import { RadioIndicator } from './RadioLabel';
+import PokemonDetails from './PokemonDetails';
 
 interface Props {
 	pokemon: Pokemon[];
@@ -16,8 +17,8 @@ export default function PokemonList({
 	onSelect,
 	onSortChange,
 }: Props) {
-	const [sortOrder, setSortOrder] = useState('id');
-	const [activeSort, setActiveSort] = useState('id');
+	const [sortOrder, setSortOrder] = useState(null as string | null);
+	const [activeSort, setActiveSort] = useState(null as string | null);
 
 	const sortedPokemon = useMemo(() => {
 		pokemon.sort((a, b) => {
@@ -36,7 +37,7 @@ export default function PokemonList({
 
 	useEffect(() => {
 		onSortChange();
-	}, [sortOrder, onSortChange]);
+	}, [sortOrder, onSortChange, activeSort]);
 
 	return (
 		<section>
@@ -44,15 +45,15 @@ export default function PokemonList({
 				<h1 className='text-4xl'>All the Pokemon!</h1>
 				<div className='ml-auto flex'>
 					<button
-						className='col-span-4 m-0 p-0 text-xl'
+						className='col-span-4 py-1 px-2'
 						onClick={() => handleSortChange('name')}>
 						<RadioIndicator isSelected={activeSort === 'name'} />
 						Sort By Name
 					</button>
 					<button
-						className='col-span-4 pl-4 text-xl'
+						className='col-span-4 py-1 px-2'
 						onClick={() => handleSortChange('id')}>
-						<RadioIndicator isSelected={activeSort === 'name'} />
+						<RadioIndicator isSelected={activeSort === 'id'} />
 						Sort By ID
 					</button>
 				</div>
@@ -70,6 +71,13 @@ export default function PokemonList({
 					</div>
 				))}
 			</div>
+			<PokemonDetails pokemon={[]} />
+			<button className='capitalize ml-2 border rounded-sm border-[#024E74] p-3 mt-48'>
+				Previous 12
+			</button>
+			<button className='capitalize ml-2 border rounded-sm border-[#024E74] p-3 right-12 absolute mt-48'>
+				Next 12
+			</button>
 		</section>
 	);
 }
