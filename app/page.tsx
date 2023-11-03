@@ -12,14 +12,26 @@ export default async function Home({ pokemon }: { pokemon: Pokemon[] }) {
 }
 
 export async function getData() {
-	const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=12');
-	const data = await res.json();
+	// PokeApi data
+	const pokeData = await fetch(
+		'https://pokeapi.co/api/v2/pokemon?limit=12'
+	).then((res) => res.json());
 
-	const pokemon = data.results.map((result: any) => {
-		return {
-			name: result.name,
-		};
-	});
+	const pokemon = await Promise.all(
+		pokeData.results.map(async (p: any) => {
+			// Fetch sprite
+			const spriteRes = await fetch(
+				`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`
+			);
+			const spriteBlob = await spriteRes.blob();
+			const spriteURL = URL.createObjectURL(spriteBlob);
+
+			return {
+				name: p.name,
+				sprite: spriteURL,
+			};
+		})
+	);
 
 	return {
 		props: {

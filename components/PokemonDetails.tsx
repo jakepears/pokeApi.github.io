@@ -7,11 +7,15 @@ interface Props {
 export default function PokemonDetails({ pokemon }: Props) {
 	return (
 		<div>
-			{pokemon.map((pokemon) => (
-				<h2 key={pokemon.id}>{pokemon.name}</h2>
+			{pokemon.map((p) => (
+				<>
+					<h2 key={p.id}>{p.name}</h2>
+					<h4 className='capitalize'>
+						{p.name} is {p.height} decimeters tall and weighs {p.weight}{' '}
+						hectograms. It can found {p.location_area_encounters}.
+					</h4>
+				</>
 			))}
-			this is a super cool pokemon that can battle and hurt other pokemon, but
-			in a fun cartoon way
 		</div>
 	);
 }
