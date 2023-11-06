@@ -20,6 +20,7 @@ export default function PokemonPage({ pokemon }: Props) {
 				pokemon={pokemon}
 				onSelect={handleSelect}
 				onSortChange={() => setSelected(null)}
+				sprite={''}
 			/>
 			<div className='h-3' />
 			{selected && <PokemonDetails pokemon={[selected]} />}

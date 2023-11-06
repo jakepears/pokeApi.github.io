@@ -2,7 +2,10 @@
 import PokemonPage from '@/components/PokemonPage';
 import { Pokemon } from '@/types/index';
 
-export default async function Home({ pokemon }: { pokemon: Pokemon[] }) {
+interface Props {
+	pokemon: Pokemon[];
+}
+export default async function Home() {
 	const { props } = await getData();
 	return (
 		<main>
@@ -11,7 +14,7 @@ export default async function Home({ pokemon }: { pokemon: Pokemon[] }) {
 	);
 }
 
-export async function getData() {
+async function getData() {
 	// PokeApi data
 	const pokeData = await fetch(
 		'https://pokeapi.co/api/v2/pokemon?limit=12'
