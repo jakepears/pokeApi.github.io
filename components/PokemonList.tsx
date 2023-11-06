@@ -77,7 +77,7 @@ export default function PokemonList({
 					<div
 						className='flex items-center p-4 border rounded capitalize w-full h-auto m-2'
 						key={p.id}>
-						<Image src={sprite} alt={p.name} height={72} />
+						<Image src={Bulba} alt={p.name} height={72} />
 						<div className='w-3' />
 						<button className='capitalize ml-2' onClick={() => onSelect(p)}>
 							{p.name}
